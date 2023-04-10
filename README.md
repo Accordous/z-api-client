@@ -22,6 +22,33 @@ Z_API_HOST='https://api.z-api.io'
 ```
 
 ## Recursos
+- Obter situação da instância `/status`
+
+get
+```php
+use Accordous\ZAPIClient\Services\ZAPIService;
+
+$service = new ZAPIService($instanciaId, $instanciaToken);
+
+$response = $service->instance()->situacao();
+
+$result = $response->json();
+```
+
+- Reiniciar instância `/restart`
+
+get
+```php
+use Accordous\ZAPIClient\Services\ZAPIService;
+
+$service = new ZAPIService($instanciaId, $instanciaToken);
+
+$response = $service->instance()->reiniciar();
+
+$result = $response->json();
+```
+
+## Recursos
 - Enviar texto simples `/send-text`
 
 post

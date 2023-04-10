@@ -2,6 +2,7 @@
 
 namespace Accordous\ZAPIClient\Services;
 
+use Accordous\ZAPIClient\Services\Endpoints\InstanceEndpoint;
 use Accordous\ZAPIClient\Services\Endpoints\MessagesEndpoint;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
@@ -12,6 +13,11 @@ class ZAPIService
      * @var \Illuminate\Http\Client\PendingRequest
      */
     private $http;
+
+    /**
+     * @var InstanceEndpoint
+     */
+    private $instance;
 
     /**
      * @var MessagesEndpoint
@@ -32,7 +38,16 @@ class ZAPIService
                 'Cache-Control' => 'no-cache',
             ]);
 
+        $this->instance = new InstanceEndpoint($this->http);
         $this->messages = new MessagesEndpoint($this->http);
+    }
+
+    /**
+     * @return InstanceEndpoint
+     */
+    public function instance(): InstanceEndpoint
+    {
+        return $this->instance;
     }
 
     /**
