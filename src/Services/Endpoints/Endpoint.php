@@ -3,6 +3,7 @@
 namespace Accordous\ZAPIClient\Services\Endpoints;
 
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
 abstract class Endpoint
@@ -21,6 +22,10 @@ abstract class Endpoint
 
     protected function validate(array $attributes): array
     {
+        if (Config::get('z-api.test_phone')) {
+            $attributes['phone'] = Config::get('z-api.test_phone');
+        }
+
         return Validator::validate($attributes, $this->rules(), $this->messages(), $this->attributes());
     }
 
