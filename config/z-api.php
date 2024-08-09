@@ -5,4 +5,5 @@ return [
     'instance_id' => env('Z_API_INSTANCE_ID', ''),
     'instance_token' => env('Z_API_INSTANCE_TOKEN', ''),
     'test_phone' => env('Z_API_TEST_PHONE', null),
+    'client_token' => env('Z_API_CLIENT_TOKEN', ''),
 ];
